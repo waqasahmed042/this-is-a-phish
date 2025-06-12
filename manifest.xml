@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" xsi:type="MailApp">
+  <Id>2a6df7ba-18d9-4c6d-a769-3d190659582d</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>BaitAndPhish Security</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="This is a Phish!"/>
+  <Description DefaultValue="Report phishing emails with one click. Automatically detects simulated phishing tests and forwards suspicious emails to your IT security team for review. Company-specific settings ensure proper handling of all reported emails."/>
+  <IconUrl DefaultValue="https://waqasahmed042.github.io/This-is-a-Phish/assets/icon-64.png"/>
+  <HighResolutionIconUrl DefaultValue="https://waqasahmed042.github.io/This-is-a-Phish/assets/icon-128.png"/>
+  <SupportUrl DefaultValue="https://baitandphish.com/support"/>
+  <AppDomains>
+    <AppDomain>baitandphish.com</AppDomain>
+    <AppDomain>https://login.windows.net</AppDomain>
+    <AppDomain>https://login.microsoftonline.com</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.1"/>
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://waqasahmed042.github.io/This-is-a-Phishtaskpane.html"/>
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+  <Permissions>ReadWriteItem</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+  </Rule>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
+      <Requirements>
+        <bt:Sets DefaultMinVersion="1.3">
+          <bt:Set Name="Mailbox"/>
+        </bt:Sets>
+      </Requirements>
+      <Hosts>
+        <Host xsi:type="MailHost">
+          <DesktopFormFactor>
+            <FunctionFile resid="Commands.Url"/>
+            <ExtensionPoint xsi:type="MessageReadCommandSurface">
+              <OfficeTab id="TabDefault">
+                <Group id="msgReadGroup">
+                  <Label resid="GroupLabel"/>
+                  <Control xsi:type="Button" id="msgReadOpenPaneButton">
+                    <Label resid="TaskpaneButton.Label"/>
+                    <Supertip>
+                      <Title resid="TaskpaneButton.title"/>
+                      <Description resid="TaskpaneButton.Tooltip"/>
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="Icon.16x16"/>
+                      <bt:Image size="32" resid="Icon.32x32"/>
+                      <bt:Image size="48" resid="Icon.48x48"/>
+                      <bt:Image size="80" resid="Icon.80x80"/>
+                    </Icon>
+                    <Action xsi:type="ShowTaskpane">
+                      <SourceLocation resid="Taskpane.Url"/>
+                    </Action>
+                  </Control>
+                </Group>
+              </OfficeTab>
+            </ExtensionPoint>
+          </DesktopFormFactor>
+        </Host>
+      </Hosts>
+      <Resources>
+        <bt:Images>
+          <bt:Image id="Icon.16x16" DefaultValue="https://waqasahmed042.github.io/This-is-a-Phish/assets/icon-16.png"/>
+          <bt:Image id="Icon.32x32" DefaultValue="https://waqasahmed042.github.io/This-is-a-Phish/assets/icon-32.png"/>
+          <bt:Image id="Icon.48x48" DefaultValue="https://waqasahmed042.github.io/This-is-a-Phish/assets/icon-48.png"/>
+          <bt:Image id="Icon.80x80" DefaultValue="https://waqasahmed042.github.io/This-is-a-Phish/assets/icon-80.png"/>
+        </bt:Images>
+        <bt:Urls>
+          <bt:Url id="Commands.Url" DefaultValue="https://waqasahmed042.github.io/This-is-a-Phishcommands.html"/>
+          <bt:Url id="Taskpane.Url" DefaultValue="https://waqasahmed042.github.io/This-is-a-Phishtaskpane.html"/>
+        </bt:Urls>
+        <bt:ShortStrings>
+          <bt:String id="GroupLabel" DefaultValue="Security"/>
+          <bt:String id="TaskpaneButton.Label" DefaultValue="This is a Phish!"/>
+          <bt:String id="TaskpaneButton.title" DefaultValue="Report Phishing Email"/>
+        </bt:ShortStrings>
+        <bt:LongStrings>
+          <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Report this email as a potential phish. The system will automatically detect if this is a training exercise or forward it to your security team for review."/>
+        </bt:LongStrings>
+      </Resources>
+    </VersionOverrides>
+  </VersionOverrides>
+</OfficeApp>
